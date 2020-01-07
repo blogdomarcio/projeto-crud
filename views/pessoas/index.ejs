@@ -1,0 +1,36 @@
+<%- include('../partials/header'); -%>
+
+
+<div class="container">
+
+    
+<h3>Lista de Pessoas Cadastradas</h1>
+    
+    <p><a href="/pessoas/create" class="btn btn-info">Nova Pessoa</a></p>
+
+<table class="table table-bordered table-striped table-hover table-sm">
+    <tr>
+        <th>Nome</th>
+        <th>Ações</th>
+    </tr>
+    <% pessoas.map( pessoa => { %>
+    <tr>
+        <td width="80%"> <%= pessoa.nome %> </td>
+        <td> 
+   
+
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <a type="button" class="btn btn-info"  href="/pessoas/update/<%= pessoa.id %>"> Editar <i class="fas fa-edit" aria-hidden="true"> </i></a>
+                <a type="button" class="btn btn-danger"  href="/pessoas/excluir/<%= pessoa.id %>" onclick="return confirm('Deseja Realmente excluir?')">  Excluir <i class="fas fa-trash" aria-hidden="true"> </i></a>
+                
+              </div>
+                
+        </td>
+    </tr>
+    <% }) %>
+</table> 
+
+</div>
+
+<%- include('../partials/footer'); -%>
+

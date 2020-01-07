@@ -1,0 +1,29 @@
+<%- include('../partials/header'); -%>
+
+
+<div class="container">
+    <%= pessoa %>
+
+    <%= JSON.stringify(pessoa) %>
+    
+<h3>Editar - Pessoa</h1>
+    
+    <p><a href="/pessoas" class="btn btn-info">Voltar</a></p>
+
+    <form method="POST">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Nome</label>
+          <input type="text" class="form-control" id="nome" name="nome" value="<%= pessoa.nome %>" aria-describedby="emailHelp">
+          <small id="emailHelp" class="form-text text-muted">Digite o nome da Pessoa.</small>
+        </div>
+        
+        
+        <button type="submit" class="btn btn-primary">Salvar</button>
+      </form>
+
+ 
+
+</div>
+
+<%- include('../partials/footer'); -%>
+
