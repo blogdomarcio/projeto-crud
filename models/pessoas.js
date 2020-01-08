@@ -1,21 +1,21 @@
-const findAll = (connection) => {
+const findAll = (dados) => {
 
-    return new Promise((resolve, reject) => {
+    // return new Promise((resolve, reject) => {
 
-        connection.query('select * from pessoas', (err, results) => {
-           if(err){
-               reject(err)
-           }else{
-            resolve(results)
-           }
+    //     connection.query('select * from pessoas', (err, results) => {
+    //        if(err){
+    //            reject(err)
+    //        }else{
+    //         resolve(results)
+    //        }
             
-        })
+    //     })
 
-    })
+    // })
 
 }
 
-const findById = (connection, id) => {
+const findById = async(connection, id) => {
 
     return new Promise((resolve, reject) => {
 
@@ -35,9 +35,13 @@ const findById = (connection, id) => {
 
     })
 
+    // const pessoa = await dados('pessoas').where({ id: req.params.id })
+
+    // return pessoa
+
 }
 
-const deleteOne = (connection, id) => {
+const deleteOne = (dados, id) => {
 
     return new Promise((resolve, reject) => {
         connection.query('delete from pessoas where id = '+id+' limit 1', (err) => {

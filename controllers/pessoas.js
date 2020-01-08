@@ -1,14 +1,27 @@
 const pessoas = require('../models/pessoas')
 
+const dados = require('knex')({
+    client: 'mysql2',
+    connection: {
+        host: '127.0.0.1',
+        user: 'root',
+        password: '',
+        database: 'cadastro'
+    }
+})
+
+
+
 const index = async (connection, req, res) => {
 
-    const results = await pessoas.findAll(connection)
+    const results = await dados('pessoas').select('*')
     res.render('pessoas/index', { pessoas: results })
    
 }
 
 const deleteOne = async(connection, req, res) => {
-    await pessoas.deleteOne(connection, req.params.id)
+    // await pessoas.deleteOne(connection, req.params.id)
+    await dados('pessoas').where({ id: req.params.id }).del()
     res.redirect('/pessoas')
 }
 
@@ -18,6 +31,9 @@ const createForm = (req, res) => {
 
 const createProcess =  async(connection, req, res) => {
     await pessoas.create(connection, req.body)
+    // await dados('pessoas').insert({
+    //     nome: req.body.nome
+    // })
     res.redirect('/pessoas')
 }
 

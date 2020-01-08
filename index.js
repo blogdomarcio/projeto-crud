@@ -13,7 +13,20 @@ const connection = mysql.createConnection({
     database: 'cadastro'
 })
 
+const dados = require('knex')({
+    client: 'mysql2',
+    connection: {
+        host: '127.0.0.1',
+        user: 'root',
+        password: '',
+        database: 'cadastro'
+    }
+})
+
+ 
+
 const dependencies = {
+    dados,
     connection
 }
 
